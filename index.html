@@ -46,6 +46,26 @@
     }
     #legend strong { font-size:12px; }
     #legendGrid { display:grid; grid-template-columns: 1fr 1fr; gap:3px 12px; margin-top:6px; }
+    .legendItem { display:flex; align-items:center; gap:6px; min-width:0; }
+    .swatches {
+      display:inline-flex; flex:0 0 28px; height:13px; overflow:hidden;
+      border:1px solid #888; border-radius:1px;
+    }
+    .swatches i { flex:1; min-width:0; background:var(--swatch); }
+    .swatches .swatch--tod {
+      background-color:#fff;
+      background-image:repeating-linear-gradient(45deg, transparent 0 3px, #555 3px 4px),
+        repeating-linear-gradient(-45deg, transparent 0 3px, #555 3px 4px);
+    }
+    .swatches .swatch--lakefront {
+      background:repeating-linear-gradient(90deg, #00724c 0 2px, #fff 2px 4px);
+    }
+    .swatches .swatch--esz {
+      background:repeating-linear-gradient(135deg, #4ce500 0 2px, #00724c 2px 5px);
+    }
+    .swatches .swatch--transport {
+      background:linear-gradient(180deg, transparent 0 40%, #666 40% 60%, transparent 60% 100%);
+    }
     .warn { color:#6b4b00; background:#fff7d6; border-radius:6px; padding:7px; margin-top:8px; }
     .credit { font-size:10px; color:#666; margin-top:8px; }
     code { background:#f3f3f3; padding:1px 3px; border-radius:3px; }
@@ -101,18 +121,18 @@
   <div id="legend">
     <strong>Selected DP-2047 land-use codes</strong>
     <div id="legendGrid">
-      <span>RG-I–RG-V — Residential</span>
-      <span>TOD — Transit Oriented</span>
-      <span>CMU-I–III — Commercial</span>
-      <span>I-1/I-2 — Industrial</span>
-      <span>PUF — Public Utilities</span>
-      <span>PSP — Public/Semi-public</span>
-      <span>G1–G5 — Parks/Green</span>
-      <span>W/WB — Water/Buffer</span>
-      <span>AG — Agriculture</span>
-      <span>GC — Growth Corridor</span>
-      <span>ESZ — Eco-sensitive</span>
-      <span>T — Transportation</span>
+      <span class="legendItem"><span class="swatches" aria-hidden="true"><i style="--swatch:#ffff00"></i><i style="--swatch:#ffad00"></i><i style="--swatch:#da8559"></i><i style="--swatch:#ff8400"></i><i style="--swatch:#f4ca79"></i></span>RG-I–RG-V — Residential</span>
+      <span class="legendItem"><span class="swatches" aria-hidden="true"><i class="swatch--tod"></i></span>TOD — Transit Oriented</span>
+      <span class="legendItem"><span class="swatches" aria-hidden="true"><i style="--swatch:#0070ff"></i><i style="--swatch:#004ca7"></i><i style="--swatch:#72b2ff"></i></span>CMU-I–III — Commercial</span>
+      <span class="legendItem"><span class="swatches" aria-hidden="true"><i style="--swatch:#a900e5"></i><i style="--swatch:#df72ff"></i></span>I-1/I-2 — Industrial</span>
+      <span class="legendItem"><span class="swatches" aria-hidden="true"><i style="--swatch:#722600"></i></span>PUF — Public Utilities</span>
+      <span class="legendItem"><span class="swatches" aria-hidden="true"><i style="--swatch:#e50000"></i></span>PSP — Public/Semi-public</span>
+      <span class="legendItem"><span class="swatches" aria-hidden="true"><i style="--swatch:#54ff00"></i><i style="--swatch:#96c732"></i><i style="--swatch:#38a700"></i><i class="swatch--lakefront"></i><i style="--swatch:#005946"></i></span>G1–G5 — Parks/Green</span>
+      <span class="legendItem"><span class="swatches" aria-hidden="true"><i style="--swatch:#00c5ff"></i><i style="--swatch:#a7a700"></i></span>W/WB — Water/Buffer</span>
+      <span class="legendItem"><span class="swatches" aria-hidden="true"><i style="--swatch:#d2ffbe"></i></span>AG — Agriculture</span>
+      <span class="legendItem"><span class="swatches" aria-hidden="true"><i style="--swatch:#ffebaf"></i></span>GC — Growth Corridor</span>
+      <span class="legendItem"><span class="swatches" aria-hidden="true"><i class="swatch--esz"></i></span>ESZ — Eco-sensitive</span>
+      <span class="legendItem"><span class="swatches" aria-hidden="true"><i class="swatch--transport"></i></span>T — Transportation</span>
     </div>
   </div>
 
