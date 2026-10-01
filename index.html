@@ -20,6 +20,14 @@
       background: rgba(255,255,255,.96); border-radius: 10px;
       box-shadow: 0 2px 14px rgba(0,0,0,.25); padding: 14px;
     }
+    #panelToggle {
+      display: block; position: absolute; z-index: 1001; top: 12px; left: 382px;
+      font-weight: 600; box-shadow: 0 2px 10px rgba(0,0,0,.22);
+    }
+    #legendToggle {
+      position: absolute; z-index: 1001; top: 12px; right: 12px;
+      font-weight: 600; box-shadow: 0 2px 10px rgba(0,0,0,.22);
+    }
     h1 { font-size: 17px; margin: 0 0 5px; }
     .sub { font-size: 12px; color: #555; margin-bottom: 12px; }
     label { display:block; font-size: 13px; margin: 9px 0 4px; }
@@ -42,7 +50,14 @@
     .credit { font-size:10px; color:#666; margin-top:8px; }
     code { background:#f3f3f3; padding:1px 3px; border-radius:3px; }
     @media (max-width: 650px) {
-      #panel { width: 270px; }
+      #panelToggle {
+        left: 12px;
+      }
+      #panel {
+        top: 54px; width: calc(100vw - 52px); max-width: none;
+        max-height: calc(100dvh - 66px); overflow-y: auto;
+      }
+      #panel[hidden] { display: none; }
       #legend { max-width: 280px; font-size:10px; }
       #legendGrid { grid-template-columns: 1fr; }
     }
@@ -50,6 +65,9 @@
 </head>
 <body>
   <div id="map"></div>
+
+  <button id="panelToggle" type="button" aria-controls="panel" aria-expanded="true">Hide controls</button>
+  <button id="legendToggle" type="button" aria-controls="legend" aria-expanded="true">Hide legend</button>
 
   <div id="panel">
     <h1>Bhopal Development Plan 2047</h1>
@@ -148,6 +166,24 @@
   });
 
   map.fitBounds(DP_BOUNDS, { padding: [20, 20] });
+
+  const panel = document.getElementById('panel');
+  const panelToggle = document.getElementById('panelToggle');
+  panelToggle.addEventListener('click', () => {
+    const expanded = panelToggle.getAttribute('aria-expanded') === 'true';
+    panel.hidden = expanded;
+    panelToggle.setAttribute('aria-expanded', String(!expanded));
+    panelToggle.textContent = expanded ? 'Show controls' : 'Hide controls';
+  });
+
+  const legend = document.getElementById('legend');
+  const legendToggle = document.getElementById('legendToggle');
+  legendToggle.addEventListener('click', () => {
+    const expanded = legendToggle.getAttribute('aria-expanded') === 'true';
+    legend.hidden = expanded;
+    legendToggle.setAttribute('aria-expanded', String(!expanded));
+    legendToggle.textContent = expanded ? 'Show legend' : 'Hide legend';
+  });
 </script>
 </body>
 </html>
